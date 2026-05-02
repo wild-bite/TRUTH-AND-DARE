@@ -785,7 +785,8 @@ def main():
         app.add_handler(CommandHandler(cmd, handler))
     app.add_handler(CallbackQueryHandler(btn))
     print("Bot live!\n")
-    app.run_polling(allowed_updates=Update.ALL_TYPES)
+    import asyncio
+asyncio.get_event_loop().run_until_complete(app.run_polling(allowed_updates=Update.ALL_TYPES))
 
 if __name__ == "__main__":
     main()
