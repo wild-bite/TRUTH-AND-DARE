@@ -13,7 +13,7 @@ Install: pip install python-telegram-bot==21.4
 Run:     python bot.py
 """
 
-import os, random, sqlite3, threading
+import os, random, sqlite3, threading, asyncio
 from datetime import date
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
