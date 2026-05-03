@@ -34,9 +34,9 @@ class HealthHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
         self.end_headers()
-        self.wfile.write(b"Truth & Dare Bot is alive! 🎮")
+        self.wfile.write("Truth & Dare Bot is alive! 🎮".encode("utf-8"))
     def log_message(self, format, *args):
-        pass  # Logs quiet rakhne ke liye
+        pass
 
 def run_health_server():
     server = HTTPServer(("0.0.0.0", PORT), HealthHandler)
@@ -112,7 +112,7 @@ async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f"🎮 *Aye {u.first_name}! Welcome to Truth & Dare Pro!* 🎮\n\n"
         "━━━━━━━━━━━━━━━━━━━━\n"
         "🔍 *Truth* — Sacch bolna COMPULSORY!\n"
-        "🔥 *Dare* — Jo bola jaaye KARNA PADEGA!\n"
+        "🔥 *Dare* — Jo bola jaaye KARNA PADEG!\n"
         "🪙 *Coins* — Task complete = Coins!\n"
         "🏆 *Badges* — Milestones pe rewards!\n"
         "━━━━━━━━━━━━━━━━━━━━\n\n"
@@ -330,7 +330,6 @@ def main():
     init_db()
     print("✅ Database ready!")
 
-    # Health check server background mein chalaao
     t = threading.Thread(target=run_health_server, daemon=True)
     t.start()
     print(f"✅ Health server port {PORT} pe live!")
